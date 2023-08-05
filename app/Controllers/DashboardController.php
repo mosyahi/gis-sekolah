@@ -6,6 +6,7 @@ class DashboardController extends BaseController
 {
     public function index(): string
     {
-        return view('template/main');
+        $data['title'] = 'Dashboard';
+        return view('pages/admin/index', $data);
     }
 }

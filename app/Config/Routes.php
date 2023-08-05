@@ -29,11 +29,25 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+// HOME
 $routes->get('/', 'Home::index');
 
-$routes->get('/login', 'LoginController::index');
-$routes->get('/login', 'LoginController::processLogin');
-$routes->get('/dashboard', 'DashboardController::index');
+// AUTH
+$routes->get('/login', 'AuthController::index');
+$routes->post('/login', 'AuthController::login');
+$routes->get('logout', 'AuthController::logout');
+
+// RESET PASSWORD
+$routes->get('forgot-password', 'AuthController::forgotPassword');
+$routes->post('forgot-password', 'AuthController::processForgotPassword');
+$routes->get('reset-password/(:any)', 'AuthController::showResetForm/$1', ['as' => 'password.reset']);
+$routes->post('reset-password', 'AuthController::reset', ['as' => 'password.update']);
+
+// DASHBOARD ADMIN FILTERS
+$routes->group('admin', ['filter' => 'auth'], function ($routes) {
+    $routes->get('dashboard', 'DashboardController::index');
+});
 
 /*
  * --------------------------------------------------------------------
