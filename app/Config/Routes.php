@@ -47,6 +47,15 @@ $routes->post('reset-password', 'AuthController::reset', ['as' => 'password.upda
 // DASHBOARD ADMIN FILTERS
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('dashboard', 'DashboardController::index');
+
+    // KATEGORI
+    $routes->get('kategori', 'KategoriController::index');
+    // $routes->post('tambah', 'KategoriController::tambah');
+    // SEKOLAH
+    $routes->get('sekolah', 'SekolahController::index');
+    $routes->get('sekolah/tambah', 'SekolahController::tambah');
+    // PETA
+    $routes->get('peta', 'PetaController::index');
 });
 
 /*

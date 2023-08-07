@@ -11,12 +11,12 @@ class AdminSeeder extends Seeder
         $data = [
             [
                 'nama' => 'Administrator',
-                'email' => 'mochsyarifhidayat24@gmail.com',
+                'email' => 'ahmadrizki0704@gmail.com',
                 'password' => password_hash('admin', PASSWORD_DEFAULT)
             ],
             [
                 'nama' => 'Administrator 2',
-                'email' => 'mochsyarifhidayat3255@gmail.com',
+                'email' => 'mochsyarifhidayat24@gmail.com',
                 'password' => password_hash('admin2', PASSWORD_DEFAULT)
             ]
         ];

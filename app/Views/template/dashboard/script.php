@@ -23,12 +23,19 @@
 <script src="<?= base_url('vendors/scripts/datatable-setting.js') ?>"></script>
 
 <!-- Google Tag Manager (noscript) -->
-<noscript
-><iframe
-src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
-height="0"
-width="0"
-style="display: none; visibility: hidden"
-></iframe
-></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    // Fungsi untuk menginisialisasi peta
+    function initMap() {
+        var map = L.map('map').setView([-6.9806, 108.4858], 12); // Koordinat awal peta
+
+        // Masukkan tautan ke tile layer (contoh: OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    }
+
+    // Panggil fungsi untuk menginisialisasi peta
+    initMap();
+</script>
