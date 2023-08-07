@@ -50,10 +50,19 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     // KATEGORI
     $routes->get('kategori', 'KategoriController::index');
-    // $routes->post('tambah', 'KategoriController::tambah');
+    $routes->post('kategori/add', 'KategoriController::add');
+    $routes->post('kategori/update/(:num)', 'KategoriController::update/$1');
+    $routes->get('kategori/delete/(:num)', 'KategoriController::delete/$1');
+    
     // SEKOLAH
     $routes->get('sekolah', 'SekolahController::index');
     $routes->get('sekolah/tambah', 'SekolahController::tambah');
+    $routes->get('sekolah/create', 'SekolahController::create');
+    $routes->post('sekolah/add', 'SekolahController::add');
+    $routes->get('sekolah/edit/(:num)', 'SekolahController::edit/$1');
+    $routes->post('sekolah/update/(:num)', 'SekolahController::update/$1');
+    $routes->get('sekolah/delete/(:num)', 'SekolahController::delete/$1');
+
     // PETA
     $routes->get('peta', 'PetaController::index');
 });
