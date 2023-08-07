@@ -28,14 +28,9 @@
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
-    // Fungsi untuk menginisialisasi peta
-    function initMap() {
-        var map = L.map('map').setView([-6.9806, 108.4858], 12); // Koordinat awal peta
+    // Initialize the map
+    var map = L.map('map').setView([YOUR_LATITUDE, YOUR_LONGITUDE], YOUR_ZOOM_LEVEL);
 
-        // Masukkan tautan ke tile layer (contoh: OpenStreetMap)
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-    }
-
-    // Panggil fungsi untuk menginisialisasi peta
-    initMap();
+    // Add the tile layer (you can choose the tile provider, e.g., OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 </script>

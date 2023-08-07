@@ -39,10 +39,10 @@ class AuthController extends BaseController
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/');
     }
 
-    
+
     public function forgotPassword()
     {
         return view('pages/auth/forgot-login');
@@ -56,7 +56,7 @@ class AuthController extends BaseController
         $user = $userModel->getUserByEmail($email);
 
         if ($user) {
-            $token = bin2hex(random_bytes(32)); 
+            $token = bin2hex(random_bytes(32));
 
             date_default_timezone_set('Asia/Jakarta');
 
@@ -78,18 +78,18 @@ class AuthController extends BaseController
                 $mail->Username = 'koi020987@gmail.com';
                 $mail->Password = 'bxreoedupmdpgpwk';
                 $mail->SMTPSecure = 'tls';
-                $mail->Port = 587;                                  
+                $mail->Port = 587;
 
-                $mail->setFrom('mosyahicenter@gmail.com', 'Reset Password'); 
-                $mail->addAddress($email);   
+                $mail->setFrom('mosyahicenter@gmail.com', 'Reset Password');
+                $mail->addAddress($email);
 
-                $mail->isHTML(true);                                  
+                $mail->isHTML(true);
                 $mail->Subject = 'Reset Password';
                 $mail->Body    = 'Silahkan klik link berikut untuk proses reset password anda. Token akan expired dalam waktu 3 menit: <br><br>' . $resetLink;
 
                 $mail->send();
-                
-            } catch (Exception $e) {}
+            } catch (Exception $e) {
+            }
 
             $session = \Config\Services::session();
             $session->setFlashdata('success', 'Email reset password telah dikirim. Silakan periksa email Anda.');
@@ -146,7 +146,7 @@ class AuthController extends BaseController
         }
 
         // Update password buat user terkait
-        $userModel = new UserModel(); 
+        $userModel = new UserModel();
         $user = $userModel->find($resetData['id_admin']);
 
         if (!$user) {
