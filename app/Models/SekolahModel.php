@@ -9,7 +9,7 @@ class SekolahModel extends Model
 {
     protected $table = 'tbl_sekolah';
     protected $primaryKey = 'id_sekolah';
-    protected $allowedFields = ['id_kategori', 'nama_sekolah', 'deskripsi', 'gambar', 'website', 'alamat', 'akreditas', 'latitude', 'lo'];
+    protected $allowedFields = ['id_kategori', 'nama_sekolah', 'deskripsi', 'gambar', 'website', 'alamat', 'akreditas', 'latitude', 'longitude'];
 
     public function getKategoriOptions()
     {

@@ -78,10 +78,10 @@
                                 </div>
                             </td>
                         <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
