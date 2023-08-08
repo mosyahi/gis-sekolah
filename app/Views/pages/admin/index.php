@@ -75,4 +75,85 @@
         </div>
     </div>
 </div>
+
+<div class="col-lg-4 col-md-6 mb-20">
+    <div class="card-box height-100-p pd-20 min-height-200px">
+        <div class="d-flex justify-content-between">
+            <div class="h5 mb-0">Diseases Report</div>
+            <div class="dropdown">
+                <a
+                class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                data-color="#1b3133"
+                href="#"
+                role="button"
+                data-toggle="dropdown"
+                >
+                <i class="dw dw-more"></i>
+            </a>
+            <div
+            class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+            >
+            <a class="dropdown-item" href="#"
+            ><i class="dw dw-eye"></i> View</a
+            >
+            <a class="dropdown-item" href="#"
+            ><i class="dw dw-edit2"></i> Edit</a
+            >
+            <a class="dropdown-item" href="#"
+            ><i class="dw dw-delete-3"></i> Delete</a
+            >
+        </div>
+    </div>
+</div>
+
+<div id="ekhem"></div>
+</div>
+</div>
+
+<?php
+$kategoriModel = new \App\Models\KategoriModel();
+$dataFromDatabase = $kategoriModel->findAll();
+
+$seriesData = [];
+foreach ($dataFromDatabase as $row) {
+    $seriesData[] = $row['tingkatan'];
+}
+?>
+<script>
+    var options4 = {
+        series: <?php echo json_encode($seriesData); ?>,
+        chart: {
+            height: 350,
+            type: 'radialBar',
+        },
+        colors: ['#003049', '#d62828', '#f77f00', '#fcbf49', '#e76f51'],
+        plotOptions: {
+            radialBar: {
+                dataLabels: {
+                    name: {
+                        fontSize: '22px',
+                    },
+                    value: {
+                        fontSize: '16px',
+                    },
+                    total: {
+                        show: true,
+                        label: 'Total',
+                        formatter: function (w) {
+                            return 260
+                        }
+                    }
+                }
+            }
+        },
+        labels: <?php echo json_encode($seriesData); ?>,
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var chart4 = new ApexCharts(document.querySelector("#ekhem"), options4);
+        chart4.render();
+    });
+</script>
+?>
+
 <?= $this->endSection(); ?>

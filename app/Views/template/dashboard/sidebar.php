@@ -14,9 +14,15 @@
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 <li>
+                    <div class="sidebar-small-cap">HOME</div>
+                </li>
+                <li>
                     <a href="<?= base_url('admin/dashboard') ?>" class="dropdown-toggle no-arrow <?= ($activePage == 'home') ? 'active' : '' ?>">
-                        <span class="micon bi bi-house-door-fill"></span><span class="mtext">Home</span>
+                        <span class="micon bi bi-house-door-fill"></span><span class="mtext">Dashboard</span>
                     </a>
+                </li>
+                <li>
+                    <div class="sidebar-small-cap">DATA MASTER</div>
                 </li>
                 <li>
                     <a href="<?= base_url('admin/kategori') ?>" class="dropdown-toggle no-arrow <?= ($activePage == 'kategori' || $activePage == 'tambah_kategori' || $activePage == 'edit_kategori') ? 'active' : '' ?>">
@@ -27,6 +33,9 @@
                     <a href="<?= base_url('admin/sekolah') ?>" class="dropdown-toggle no-arrow <?= ($activePage == 'sekolah' || $activePage == 'tambah_sekolah' || $activePage == 'edit_sekolah') ? 'active' : '' ?>">
                         <span class="micon bi bi-easel2-fill"></span><span class="mtext">Sekolah</span>
                     </a>
+                </li>
+                <li>
+                    <div class="sidebar-small-cap">RUTE MAPS</div>
                 </li>
                 <li>
                     <a href="<?= base_url('admin/peta') ?>" class="dropdown-toggle no-arrow <?= ($activePage == 'peta' || $activePage == 'tambah_peta' || $activePage == 'edit_peta') ? 'active' : '' ?>">

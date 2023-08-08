@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table hover multiple-select-row data-table-export nowrap">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -77,11 +77,11 @@
                                     </div>
                                 </div>
                             </td>
-                        <?php endforeach; ?>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
 <?= $this->endSection(); ?>

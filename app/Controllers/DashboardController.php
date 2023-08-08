@@ -12,10 +12,10 @@ class DashboardController extends BaseController
         $model = new UserModel();
         $countAdmin = $model->findAll();
 
-        $modelKategori = new UserModel();
+        $modelKategori = new KategoriModel();
         $countKategori = $modelKategori->findAll();
 
-        $modelSekolah = new UserModel();
+        $modelSekolah = new SekolahModel();
         $countSekolah = $modelSekolah->findAll();
 
 

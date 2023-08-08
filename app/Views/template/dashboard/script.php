@@ -22,35 +22,6 @@
 <!-- Datatable Setting js -->
 <script src="<?= base_url('vendors/scripts/datatable-setting.js') ?>"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    const provinsiSelect = $('#provinsi');
-    const kabupatenSelect = $('#kabupaten');
-
-    // Mengisi form select provinsi
-    $.getJSON('/json/provinsi.json', function(data) {
-        $.each(data, function(index, provinsi) {
-            provinsiSelect.append($('<option>').val(provinsi.id).text(provinsi.nama));
-        });
-    });
-
-    // Mengisi form select kabupaten berdasarkan provinsi terpilih
-    provinsiSelect.on('change', function() {
-        const selectedProvinsi = $(this).val();
-        kabupatenSelect.empty().append($('<option>').val('').text('Pilih Kabupaten/Kota'));
-
-        if (selectedProvinsi) {
-            $.getJSON('/json/kabupaten.json', function(data) {
-                $.each(data, function(index, kabupaten) {
-                    if (kabupaten.id_provinsi === selectedProvinsi) {
-                        kabupatenSelect.append($('<option>').val(kabupaten.id).text(kabupaten.nama));
-                    }
-                });
-            });
-        }
-    });
-</script>
-
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
