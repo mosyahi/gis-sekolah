@@ -11,14 +11,14 @@
             <div class="card-box height-100-p widget-style3">
                 <div class="d-flex flex-wrap">
                     <div class="widget-data">
-                        <div class="weight-700 font-24 text-dark">75</div>
+                        <div class="weight-700 font-24 text-dark"><?= count($countAdmin) ?></div>
                         <div class="font-14 text-secondary weight-500">
-                            Appointment
+                            Data Admin
                         </div>
                     </div>
                     <div class="widget-icon">
                         <div class="icon" data-color="#00eccf">
-                            <i class="icon-copy dw dw-calendar1"></i>
+                            <i class="icon-copy dw dw-user"></i>
                         </div>
                     </div>
                 </div>
@@ -28,14 +28,14 @@
             <div class="card-box height-100-p widget-style3">
                 <div class="d-flex flex-wrap">
                     <div class="widget-data">
-                        <div class="weight-700 font-24 text-dark">124,551</div>
+                        <div class="weight-700 font-24 text-dark"><?= count($countKategori) ?></div>
                         <div class="font-14 text-secondary weight-500">
-                            Total Patient
+                            Data Kategori
                         </div>
                     </div>
                     <div class="widget-icon">
                         <div class="icon" data-color="#ff5b5b">
-                            <span class="icon-copy ti-heart"></span>
+                            <span class="icon-copy bi bi-journals"></span>
                         </div>
                     </div>
                 </div>
@@ -45,14 +45,14 @@
             <div class="card-box height-100-p widget-style3">
                 <div class="d-flex flex-wrap">
                     <div class="widget-data">
-                        <div class="weight-700 font-24 text-dark">400+</div>
+                        <div class="weight-700 font-24 text-dark"><?= count($countSekolah) ?></div>
                         <div class="font-14 text-secondary weight-500">
-                            Total Doctor
+                            Data Sekolah
                         </div>
                     </div>
                     <div class="widget-icon">
                         <div class="icon">
-                            <i class="icon-copy fa fa-stethoscope" aria-hidden="true"></i>
+                            <i class="icon-copy bi bi-easel2-fill" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -62,12 +62,12 @@
             <div class="card-box height-100-p widget-style3">
                 <div class="d-flex flex-wrap">
                     <div class="widget-data">
-                        <div class="weight-700 font-24 text-dark">$50,000</div>
-                        <div class="font-14 text-secondary weight-500">Earning</div>
+                        <div class="weight-700 font-24 text-dark">12</div>
+                        <div class="font-14 text-secondary weight-500">Data Kecamatan</div>
                     </div>
                     <div class="widget-icon">
                         <div class="icon" data-color="#09cc06">
-                            <i class="icon-copy fa fa-money" aria-hidden="true"></i>
+                            <i class="icon-copy bi bi-geo-alt-fill" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
@@ -75,8 +75,4 @@
         </div>
     </div>
 </div>
-
-
-
-
 <?= $this->endSection(); ?>
