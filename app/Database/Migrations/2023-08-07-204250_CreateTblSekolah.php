@@ -48,11 +48,13 @@ class CreateTblSekolah extends Migration
                 'null'           => true,
             ],
             'latitude' => [
-                'type'           => 'FLOAT',
+                'type'           => 'VARCHAR',
+                'constraint'     => '50',
                 'null'           => true,
             ],
             'longitude' => [
-                'type'           => 'FLOAT',
+                'type'           => 'VARCHAR',
+                'constraint'     => '50',
                 'null'           => true,
             ],
         ]);
