@@ -25,9 +25,13 @@
     </div>
     <!-- End Footer -->
 
-    <!-- Header -->
+    <!-- Script -->
     <?= $this->include('template/dashboard/script'); ?>
-    <!-- End Header -->
+    <!-- End Script -->
+
+    <!-- Script Maps -->
+    <?= $this->include('template/dashboard/script_maps'); ?>
+    <!-- End Script Maps -->
     
 </body>
 </html>

@@ -10,16 +10,12 @@
 <!-- Template Main JS File -->
 <script src="<?= base_url() ?>assets/js/main.js"></script>
 
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-        // Fungsi untuk menginisialisasi peta
 	function initMap() {
-            var map = L.map('map').setView([-6.9806, 108.4858], 12); // Koordinat awal peta
+		var map = L.map('map').setView([-6.9806, 108.4858], 12); 
 
-            // Masukkan tautan ke tile layer (contoh: OpenStreetMap)
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-        }
-
-        // Panggil fungsi untuk menginisialisasi peta
-        initMap();
-    </script>
+		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+	}
+	initMap();
+</script>

@@ -10,13 +10,8 @@
 <!-- Mobile Specific Metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
+<!-- MAPS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<style>
-    /* Atur tinggi peta agar penuh layar */
-    #map {
-        height: 500px;
-    }
-</style>
 
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -48,8 +43,8 @@
             event: "gtm.js"
         });
         var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s),
-            dl = l != "dataLayer" ? "&l=" + l : "";
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
         j.async = true;
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);

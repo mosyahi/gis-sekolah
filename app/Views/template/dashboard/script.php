@@ -25,12 +25,3 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script>
-    // Initialize the map
-    var map = L.map('map').setView([YOUR_LATITUDE, YOUR_LONGITUDE], YOUR_ZOOM_LEVEL);
-
-    // Add the tile layer (you can choose the tile provider, e.g., OpenStreetMap)
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-</script>
