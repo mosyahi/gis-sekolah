@@ -3,5 +3,11 @@
 
 
 <div id="map"></div>
+<div class="results-container">
+	<h2>Results: </h2>
+	<code>
+		<div id="results"></div>
+	</code>
+</div>
 
 <?= $this->endSection(); ?>

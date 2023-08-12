@@ -12,6 +12,10 @@ class PetaController extends BaseController
         $sekolahModel = $model->findAll();
 
         $data['sekolahJson'] = json_encode($sekolahModel);
+
+
+
+        
         $data['title'] = 'Peta';
         $data['activePage'] = 'peta';
 
