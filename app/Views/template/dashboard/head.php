@@ -13,6 +13,9 @@
 <!-- MAPS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <link rel="stylesheet" href="<?= base_url() ?>src/maps/Leaflet.AnimatedSearchBox.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.14.0/dist/Control.Geocoder.css" /> -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css"/>
 
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />

@@ -1,0 +1,83 @@
+var searchControl = L.Control.geocoder({
+        defaultMarkGeocode: false,
+    }).addTo(map);
+
+// Listen for the "markgeocode" event when a location is selected from the search results
+    map.on('geocoder:markgeocode', function (e) {
+        var location = e.geocode.center;
+
+    // Clear existing route and results
+        if (routeControl) {
+            map.removeControl(routeControl);
+        }
+        resultsContainer.innerHTML = '';
+
+    // Create a marker for the selected location
+        var searchMarker = L.marker(location).addTo(map);
+
+    // Call your showRoute function with the selected location
+        showRoute(location);
+
+    // Close any open popups
+        if (lastClickedMarker) {
+            lastClickedMarker.closePopup();
+        }
+
+    // Additional code for searching and adding markers from database
+        var searchQuery = e.geocode.query;
+        searchQuery = searchQuery.toLowerCase();
+
+    // Loop through your sekolahData array and check for matching names
+        for (var i = 0; i < sekolahData.length; i++) {
+            var sekolah = sekolahData[i];
+            var namaSekolah = sekolah.nama_sekolah.toLowerCase();
+            
+            if (namaSekolah.includes(searchQuery)) {
+                var sekolahLocation = L.latLng(sekolah.latitude, sekolah.longitude);
+                var sekolahMarker = L.marker(sekolahLocation)
+                .addTo(map)
+                .bindPopup('<b>Keterangan</b><br>Nama Sekolah: ' + sekolah.nama_sekolah +
+                    '<br>Alamat: ' + sekolah.alamat +
+                    '<br>Deskripsi: ' + sekolah.deskripsi +
+                    '<br>Website: <a href="' + sekolah.website + '" target="_blank">' + sekolah.website + '</a>' +
+                    '<br>Akreditas: ' + sekolah.akreditas +
+                    '<br><br><b>Rute Jalan</b>')
+                .openPopup();
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Inisialisasi kontrol geocoder
+    var geocoder = L.Control.geocoder({
+        defaultMarkGeocode: false,
+        placeholder: "Cari lokasi...",
+    }).on("markgeocode", function (e) {
+        var latlng = e.geocode.center;
+
+        // Tambahkan marker pada lokasi yang dicari
+        var searchMarker = L.marker(latlng).addTo(map);
+        searchMarker.bindPopup(e.geocode.html).openPopup();
+
+        // Geser peta ke lokasi yang dicari
+        map.setView(latlng, 12);
+
+    }).addTo(map);

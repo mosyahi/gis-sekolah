@@ -29,9 +29,5 @@
     <?= $this->include('template/dashboard/script'); ?>
     <!-- End Script -->
 
-    <!-- Script Maps -->
-    <?= $this->include('template/dashboard/script_maps'); ?>
-    <!-- End Script Maps -->
-    
 </body>
 </html>

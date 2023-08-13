@@ -24,4 +24,10 @@ class SekolahModel extends Model
 
         return $options;
     }
+
+    public function search($keyword)
+    {
+        return $this->like('nama_sekolah', $keyword)->findAll();
+    }
+
 }

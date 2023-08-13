@@ -82,15 +82,21 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label"></label>
+                    <div class="col-sm-12 col-md-10">
+                        <div id="map"></div>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Latitude</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="latitude" type="text" placeholder="Latitude" />
+                        <input class="form-control" name="latitude" id="latitude" type="text" placeholder="Latitude" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Longtitude</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="longitude" type="text" placeholder="Longtitude" />
+                        <input class="form-control" name="longitude" id="longitude" type="text" placeholder="Longtitude" />
                     </div>
                 </div>
                 <div>
@@ -106,4 +112,5 @@
     </div>
 </div>
 <!-- </div> -->
+<?= $this->include('template/dashboard/script_map_tambah'); ?>
 <?= $this->endSection(); ?>

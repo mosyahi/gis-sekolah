@@ -6,7 +6,7 @@
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="<?= base_url() ?>assets/img/favicon.png" rel="icon">
+<link href="<?= base_url('vendors/images/school.png')?>" rel="icon">
 <link href="<?= base_url() ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- MAPS CSS -->
@@ -14,6 +14,13 @@
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<!-- MAPS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link rel="stylesheet" href="<?= base_url() ?>src/maps/Leaflet.AnimatedSearchBox.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.14.0/dist/Control.Geocoder.css" /> -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css"/>
 
 <!-- Vendor CSS Files -->
 <link href="<?= base_url() ?>assets/vendor/aos/aos.css" rel="stylesheet">

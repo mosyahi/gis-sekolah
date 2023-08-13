@@ -25,9 +25,9 @@ class SekolahController extends BaseController
 
     public function tambah()
     {
+
         $sekolahModel = new SekolahModel();
         $data['kategori_options'] = $sekolahModel->getKategoriOptions();
-
         $data['title'] = 'Sekolah';
         $data['activePage'] = 'sekolah';
 
@@ -36,67 +36,53 @@ class SekolahController extends BaseController
 
     public function add()
     {
-        $sekolahModel = new SekolahModel();
+        $model = new SekolahModel();
 
-        $fileGambar = $this->request->getFile('gambar');
+        $fileMateri = $this->request->getFile('gambar');
 
-        // Pindahkan file ke direktori yang diinginkan jika ada
-        $sortirType = [
+    // Pindahkan file ke direktori yang diinginkan jika ada
+        $allowedFileTypes = [
             'image/jpeg',
             'image/png'
         ];
 
-        if ($fileGambar && $fileGambar->isValid() && !in_array($fileGambar->getClientMimeType(), $sortirType)) {
-            return redirect()->to('admin/sekolah/tambah')->withInput()->with('gagal', 'File Gambar harus berupa JPG, atau PNG');
+        if ($fileMateri && $fileMateri->isValid() && !in_array($fileMateri->getClientMimeType(), $allowedFileTypes)) {
+            return redirect()->to('admin/sekolah')->withInput()->with('gagal', 'File Materi harus berupa PDF, JPG, atau PNG');
         }
 
         $data = [
+            'id_sekolah' => $this->request->getPost('id_sekolah'),
             'id_kategori' => $this->request->getPost('id_kategori'),
             'nama_sekolah' => $this->request->getPost('nama_sekolah'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'gambar' => $this->request->getPost('gambar'),
             'website' => $this->request->getPost('website'),
             'alamat' => $this->request->getPost('alamat'),
             'akreditas' => $this->request->getPost('akreditas'),
             'latitude' => $this->request->getPost('latitude'),
-            'longitude' => $this->request->getPost('longitude'),
+            'longitude' => $this->request->getPost('longitude')
         ];
 
-        $validationRules = [
-            'id_kategori' => 'required',
-            'nama_sekolah' => 'required',
-            'deskripsi' => 'required',
-            'gambar' => 'required',
-            'website' => 'required',
-            'alamat' => 'required',
-            'akreditas' => 'required',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
-        ];
+        // Pindahkan file materi ke direktori yang diinginkan jika ada
+        if ($fileMateri && $fileMateri->isValid()) {
+            $newFileName = $fileMateri->getRandomName();
 
-        $errorMessages = [
-            'latitude.numeric' => 'Latitude harus berupa angka.',
-            'longitude.numeric' => 'Longitude harus berupa angka.',
-        ];
+            // Ganti "app" dengan nama direktori yang sesuai di aplikasi Anda
+            $uploadPath = WRITEPATH . 'uploads/';
 
-        $this->validation->setRules($validationRules, $errorMessages);
+            // Pastikan direktori tujuan ada, jika belum buat direktori
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0777, true);
+            }
 
-        $namaSekolah = $sekolahModel->where('nama_sekolah', $data['nama_sekolah'])->countAllResults();
-        if ($namaSekolah > 0) {
-            return redirect()->back()->withInput()->with('error', 'Nama Sekolah sudah ada.');
-        }
-
-        // Pindahkan file gambar ke direktori yang diinginkan jika ada
-        if ($fileGambar && $fileGambar->isValid()) {
-            $newFileName = $fileGambar->getRandomName();
-            $fileGambar->move(ROOTPATH . 'public/uploads', $newFileName);
+            $fileMateri->move($uploadPath, $newFileName);
             $data['gambar'] = $newFileName;
         }
 
-        $sekolahModel->insert($data);
+        $model->insert($data);
 
-        return redirect()->to('admin/sekolah')->with('success', 'Data Sekolah berhasil ditambahkan.');
+        return redirect()->to('admin/sekolah')->with('success', 'Data Materi berhasil ditambahkan.');
     }
+
 
 
     public function edit($id_sekolah)
