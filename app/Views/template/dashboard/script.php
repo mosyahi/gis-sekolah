@@ -10,6 +10,9 @@
 <script src="<?= base_url('src/plugins/datatables/js/responsive.bootstrap4.min.js') ?>"></script>
 <script src="<?= base_url('vendors/scripts/dashboard3.js') ?>"></script>
 
+<!-- Open Gambar -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
 <!-- buttons for Export datatable -->
 <script src="<?= base_url('src/plugins/datatables/js/dataTables.buttons.min.js') ?>"></script>
 <script src="<?= base_url('src/plugins/datatables/js/buttons.bootstrap4.min.js') ?>"></script>

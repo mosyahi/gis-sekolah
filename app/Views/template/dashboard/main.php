@@ -16,14 +16,12 @@
     <!-- Content -->
     <div class="main-container">
         <?= $this->renderSection('content'); ?>
+        <!-- Footer -->
+        <?= $this->include('template/dashboard/footer'); ?>
+        <!-- End Footer -->
     </div>
     <!-- End Content -->
 
-    <!-- Footer -->
-    <div class="footer-wrap pd-20 mb-20 card-box">
-        <?= $this->include('template/dashboard/footer'); ?>
-    </div>
-    <!-- End Footer -->
 
     <!-- Script -->
     <?= $this->include('template/dashboard/script'); ?>

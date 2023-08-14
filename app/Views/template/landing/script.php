@@ -1,18 +1,18 @@
 <!-- Vendor JS Files -->
-<script src="<?= base_url() ?>assets/vendor/purecounter/purecounter_vanilla.js"></script>
-<script src="<?= base_url() ?>assets/vendor/aos/aos.js"></script>
-<script src="<?= base_url() ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?= base_url() ?>assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="<?= base_url() ?>assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="<?= base_url() ?>assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="<?= base_url() ?>assets/vendor/php-email-form/validate.js"></script>
+<script src="<?= base_url() ?>assets/vendors/purecounter/purecounter_vanilla.js"></script>
+<script src="<?= base_url() ?>assets/vendors/aos/aos.js"></script>
+<script src="<?= base_url() ?>assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url() ?>assets/vendors/glightbox/js/glightbox.min.js"></script>
+<script src="<?= base_url() ?>assets/vendors/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="<?= base_url() ?>assets/vendors/swiper/swiper-bundle.min.js"></script>
+<script src="<?= base_url() ?>assets/vendors/php-email-form/validate.js"></script>
 
 <!-- Template Main JS File -->
 <script src="<?= base_url() ?>assets/js/main.js"></script>
 
 <style>
 	#map {
-		height: 300px;
+		height: 700px;
 	}
 	.route-instructions {
 		margin-top: 20px;
@@ -101,6 +101,8 @@
 					'<br>Deskripsi: ' + sekolah.deskripsi +
 					'<br>Website: <a href="' + sekolah.website + '" target="_blank">' + sekolah.website + '</a>' +
 					'<br>Akreditas: ' + sekolah.akreditas +
+					'<br>latitude: ' + sekolah.latitude +
+					'<br>longitude: ' + sekolah.longitude +
 					'<br><br><b>Rute Jalan</b>');
 			});
 		});

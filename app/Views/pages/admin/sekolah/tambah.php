@@ -32,11 +32,11 @@
                     <p class="mb-30">Silahkan input data kategori dengan benar.</p>
                 </div>
             </div>
-            <form action="<?= site_url('admin/sekolah/add') ?>" method="post">
+            <form action="<?= site_url('admin/sekolah/add') ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Sekolah</label>
                     <div class="col-sm-12 col-md-10">
-                        <select class="form-control" name="id_kategori" type="text" placeholder="Isi Tingkatan Sekolah">
+                        <select class="form-control" name="id_kategori" type="text" placeholder="Isi Tingkatan Sekolah" required>
                             <option selected disabled>Pilih Jenis Sekolah</option>}
                             option
                             <?php foreach ($kategori_options as $key => $value): ?>
@@ -48,37 +48,42 @@
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Nama Sekolah</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="nama_sekolah" type="text" placeholder="Nama Sekolah" />
+                        <input class="form-control" name="nama_sekolah" type="text" placeholder="Nama Sekolah" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="deskripsi" placeholder="Search Here" type="search" />
+                        <input class="form-control" name="deskripsi" placeholder="Search Here" type="search" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Gambar</label>
                     <div class="col-sm-12 col-md-10">
-                        <input type="file" name="gambar" class="form-control-file form-control height-auto" enctype="multipart/form-data"/>
+                        <input type="file" name="gambar" id="gambar" accept="image/jpeg, image/png" class="form-control-file form-control height-auto" multiple required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Website</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="website" value="https://getbootstrap.com" type="url" />
+                        <input class="form-control" name="website" value="https://getbootstrap.com" type="url" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Alamat</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="alamat" type="text" placeholder="Alamat" />
+                        <input class="form-control" name="alamat" type="text" placeholder="Alamat" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Akreditasi</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="akreditas" type="text" placeholder="Akreditasi" />
+                        <select class="form-control" name="akreditas" type="text" placeholder="Isi Tingkatan Sekolah" required>
+                            <option selected disabled>Pilih Akreditas</option>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>C</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -90,13 +95,13 @@
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Latitude</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="latitude" id="latitude" type="text" placeholder="Latitude" />
+                        <input class="form-control" name="latitude" id="latitude" type="text" placeholder="Latitude" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Longtitude</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="longitude" id="longitude" type="text" placeholder="Longtitude" />
+                        <input class="form-control" name="longitude" id="longitude" type="text" placeholder="Longtitude" required/>
                     </div>
                 </div>
                 <div>

@@ -87,26 +87,24 @@
                         <div class="form-group row">
                             <label class="col-sm-12 col-md-3 col-form-label">Sekolah</label>
                             <div class="col-sm-12 col-md-9">
-                                <select class="form-control" name="jenis_sekolah" type="text" placeholder="Isi Tingkatan Sekolah">
-                                    <option selected> Pilih Sekolah</option>
+                                <select class="form-control" name="jenis_sekolah" type="text" placeholder="Isi jenis Sekolah">
+                                    <option selected disabled> Pilih Sekolah</option>
                                     <option>SMA</option>
                                     <option>SMK</option>
                                     <option>MA</option>
                                     <option>SMP</option>
                                     <option>MTS</option>
                                 </select>
-
                             </div>
                         </div>
-                        <div class="row">
-                            <label class="col-sm-12 col-md-3">Tingkatan</label>
-                            <div class="custom-control custom-radio col-md-2 col-sm-12" style="margin-left: 10px;">
-                                <input type="radio" id="customRadio4" name="tingkatan" class="custom-control-input" value="Negeri">
-                                <label class="custom-control-label" for="customRadio4">Negeri</label>
-                            </div>
-                            <div class="custom-control custom-radio col-md-2 col-sm-12">
-                                <input type="radio" id="customRadio5" name="tingkatan" class="custom-control-input" value="Swasta">
-                                <label class="custom-control-label" for="customRadio5">Swasta</label>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-3 col-form-label">Tingkatan</label>
+                            <div class="col-sm-12 col-md-9">
+                                <select class="form-control" name="tingkatan" type="text" placeholder="Isi Tingkatan Sekolah">
+                                    <option selected disabled> Pilih Tingkatan</option>
+                                    <option>Negeri</option>
+                                    <option>Swasta</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -151,14 +149,12 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-12 col-md-3">Tingkatan</label>
-                                <div class="custom-control custom-radio col-md-2 col-sm-12" style="margin-left: 10px;">
-                                    <input type="radio" id="customRadio4" name="tingkatan" class="custom-control-input" value="Negeri" <?= $item['tingkatan'] === 'Negeri' ? 'checked' : '' ?>>
-                                    <label class="custom-control-label" for="customRadio4">Negeri</label>
-                                </div>
-                                <div class="custom-control custom-radio col-md-2 col-sm-12">
-                                    <input type="radio" id="customRadio5" name="tingkatan" class="custom-control-input" value="Swasta" <?= $item['tingkatan'] === 'Swasta' ? 'checked' : '' ?>>
-                                    <label class="custom-control-label" for="customRadio5">Swasta</label>
+                                <label class="col-sm-12 col-md-3 col-form-label">Sekolah</label>
+                                <div class="col-sm-12 col-md-9">
+                                    <select class="form-control" name="tingkatan" placeholder="Isi Tingkatan Sekolah">
+                                        <option <?= $item['tingkatan'] === 'Negeri' ? 'selected' : '' ?>>Negeri</option>
+                                        <option <?= $item['tingkatan'] === 'Swasta' ? 'selected' : '' ?>>Swasta</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="modal-footer">

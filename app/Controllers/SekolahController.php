@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\SekolahModel;
+use App\Models\KategoriModel;
 
 class SekolahController extends BaseController
 {
@@ -16,73 +17,72 @@ class SekolahController extends BaseController
     public function index()
     {
         $sekolahModel = new SekolahModel();
-        $data['sekolah'] = $sekolahModel->findAll();
+        $kategoriModel = new KategoriModel();
 
+        $sekolahData = $sekolahModel->findAll();
+
+        foreach ($sekolahData as &$item) {
+            $kategori = $kategoriModel->find($item['id_kategori']);
+            if ($kategori) {
+                $item['jenis_sekolah'] = $kategori['jenis_sekolah'];
+                $item['tingkatan'] = $kategori['tingkatan'];
+            } else {
+                $item['jenis_sekolah'] = 'Tidak Diketahui';
+                $item['tingkatan'] = 'Tidak Diketahui';
+            }
+        }
+
+        $data['sekolah'] = $sekolahData;
         $data['title'] = 'Sekolah';
         $data['activePage'] = 'sekolah';
         return view('pages/admin/sekolah/index', $data);
     }
+
 
     public function tambah()
     {
 
         $sekolahModel = new SekolahModel();
         $data['kategori_options'] = $sekolahModel->getKategoriOptions();
-        $data['title'] = 'Sekolah';
-        $data['activePage'] = 'sekolah';
+        $data['title'] = 'Tambah Sekolah';
+        $data['activePage'] = 'tambah_sekolah';
 
         return view('pages/admin/sekolah/tambah', $data);
     }
 
     public function add()
     {
-        $model = new SekolahModel();
+        $sekolahModel = new SekolahModel();
 
-        $fileMateri = $this->request->getFile('gambar');
+    // Mengambil gambar yang diunggah
+        $gambar = $this->request->getFile('gambar');
 
-    // Pindahkan file ke direktori yang diinginkan jika ada
-        $allowedFileTypes = [
-            'image/jpeg',
-            'image/png'
-        ];
+    // Lakukan validasi tipe file
+        if ($gambar->isValid() && !$gambar->hasMoved() && in_array($gambar->getClientMimeType(), ['image/jpeg', 'image/png'])) {
+            $newName = $gambar->getRandomName();
+            $gambar->move('uploads', $newName);
 
-        if ($fileMateri && $fileMateri->isValid() && !in_array($fileMateri->getClientMimeType(), $allowedFileTypes)) {
-            return redirect()->to('admin/sekolah')->withInput()->with('gagal', 'File Materi harus berupa PDF, JPG, atau PNG');
+        // Data yang akan disimpan ke database
+            $data = [
+                'id_kategori' => $this->request->getPost('id_kategori'),
+                'nama_sekolah' => $this->request->getPost('nama_sekolah'),
+                'deskripsi' => $this->request->getPost('deskripsi'),
+                'gambar' => $newName,
+                'website' => $this->request->getPost('website'),
+                'alamat' => $this->request->getPost('alamat'),
+                'akreditas' => $this->request->getPost('akreditas'),
+                'latitude' => $this->request->getPost('latitude'),
+                'longitude' => $this->request->getPost('longitude'),
+            ];
+
+        // Simpan data ke database
+            $sekolahModel->insert($data);
+
+            return redirect()->to(site_url('admin/sekolah'))->with('success', 'Data sekolah berhasil ditambahkan.');
+        } else {
+            return redirect()->to(site_url('admin/sekolah'))->with('error', 'Gagal mengunggah gambar. Pastikan Anda mengunggah file gambar (JPEG atau PNG.).');
         }
-
-        $data = [
-            'id_sekolah' => $this->request->getPost('id_sekolah'),
-            'id_kategori' => $this->request->getPost('id_kategori'),
-            'nama_sekolah' => $this->request->getPost('nama_sekolah'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'website' => $this->request->getPost('website'),
-            'alamat' => $this->request->getPost('alamat'),
-            'akreditas' => $this->request->getPost('akreditas'),
-            'latitude' => $this->request->getPost('latitude'),
-            'longitude' => $this->request->getPost('longitude')
-        ];
-
-        // Pindahkan file materi ke direktori yang diinginkan jika ada
-        if ($fileMateri && $fileMateri->isValid()) {
-            $newFileName = $fileMateri->getRandomName();
-
-            // Ganti "app" dengan nama direktori yang sesuai di aplikasi Anda
-            $uploadPath = WRITEPATH . 'uploads/';
-
-            // Pastikan direktori tujuan ada, jika belum buat direktori
-            if (!is_dir($uploadPath)) {
-                mkdir($uploadPath, 0777, true);
-            }
-
-            $fileMateri->move($uploadPath, $newFileName);
-            $data['gambar'] = $newFileName;
-        }
-
-        $model->insert($data);
-
-        return redirect()->to('admin/sekolah')->with('success', 'Data Materi berhasil ditambahkan.');
     }
-
 
 
     public function edit($id_sekolah)
@@ -90,36 +90,80 @@ class SekolahController extends BaseController
         $sekolahModel = new SekolahModel();
         $data['sekolah'] = $sekolahModel->find($id_sekolah);
         $data['kategori_options'] = $sekolahModel->getKategoriOptions();
+        $data['title'] = 'Edit Sekolah';
+        $data['activePage'] = 'edit_sekolah';
 
-        return view('admin/sekolah/edit', $data);
+        return view('pages/admin/sekolah/edit', $data);
     }
 
-    public function update($id_sekolah)
+    public function update($id)
     {
         $sekolahModel = new SekolahModel();
 
-        $data = [
-            'id_kategori' => $this->request->getPost('id_kategori'),
-            'nama_sekolah' => $this->request->getPost('nama_sekolah'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'gambar' => $this->request->getPost('gambar'),
-            'website' => $this->request->getPost('website'),
-            'alamat' => $this->request->getPost('alamat'),
-            'akreditas' => $this->request->getPost('akreditas'),
-            'latitude' => $this->request->getPost('latitude'),
-            'longitude' => $this->request->getPost('longitude'),
-        ];
+    // Mengambil data sekolah berdasarkan ID
+        $sekolah = $sekolahModel->find($id);
 
-        $sekolahModel->update($id_sekolah, $data);
+        if (!$sekolah) {
+            return redirect()->to(site_url('admin/sekolah'))->with('error', 'Data sekolah tidak ditemukan.');
+        }
 
-        return redirect()->to(site_url('admin/sekolah'));
+    // Mengambil gambar yang diunggah
+        $gambar = $this->request->getFile('gambar');
+
+    // Lakukan validasi tipe file
+        if ($gambar->isValid() && !$gambar->hasMoved() && in_array($gambar->getClientMimeType(), ['image/jpeg', 'image/png'])) {
+        // Hapus gambar lama jika ada
+            if (!empty($sekolah['gambar'])) {
+                unlink('uploads/' . $sekolah['gambar']);
+            }
+
+            $newName = $gambar->getRandomName();
+            $gambar->move('uploads', $newName);
+
+        // Data yang akan diupdate ke database
+            $data = [
+                'id_kategori' => $this->request->getPost('id_kategori'),
+                'nama_sekolah' => $this->request->getPost('nama_sekolah'),
+                'deskripsi' => $this->request->getPost('deskripsi'),
+                'gambar' => $newName,
+                'website' => $this->request->getPost('website'),
+                'alamat' => $this->request->getPost('alamat'),
+                'akreditas' => $this->request->getPost('akreditas'),
+                'latitude' => $this->request->getPost('latitude'),
+                'longitude' => $this->request->getPost('longitude'),
+            ];
+
+        // Update data ke database
+            $sekolahModel->update($id, $data);
+
+            return redirect()->to(site_url('admin/sekolah'))->with('success', 'Data sekolah berhasil diperbarui.');
+        } else {
+            return redirect()->to(site_url('admin/sekolah'))->with('error', 'Gagal mengunggah gambar. Pastikan Anda mengunggah file gambar (JPEG atau PNG.).');
+        }
     }
 
-    public function delete($id_sekolah)
+
+    public function delete($id)
     {
         $sekolahModel = new SekolahModel();
-        $sekolahModel->delete($id_sekolah);
+        $sekolah = $sekolahModel->find($id);
 
-        return redirect()->to(site_url('admin/sekolah'));
+        if (!$sekolah) {
+            return redirect()->to(site_url('admin/sekolah'))->with('error', 'Data sekolah tidak ditemukan.');
+        }
+
+    // Hapus gambar terkait jika ada
+    $gambarPath = 'uploads/' . $sekolah['gambar']; // Sesuaikan dengan path gambar
+    if (file_exists($gambarPath)) {
+        unlink($gambarPath);
     }
+
+    // Hapus data dari database
+    $sekolahModel->delete($id);
+
+    return redirect()->to(site_url('admin/sekolah'))->with('success', 'Data sekolah berhasil dihapus.');
+}
+
+
+
 }

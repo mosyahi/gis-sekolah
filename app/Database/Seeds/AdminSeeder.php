@@ -10,15 +10,10 @@ class AdminSeeder extends Seeder
     {
         $data = [
             [
-                'nama' => 'Administrator',
-                'email' => 'ahmadrizki0704@gmail.com',
+                'nama' => 'Dewa',
+                'email' => 'dewahanggara10@gmail.com',
                 'password' => password_hash('admin', PASSWORD_DEFAULT)
             ],
-            [
-                'nama' => 'Administrator 2',
-                'email' => 'mochsyarifhidayat24@gmail.com',
-                'password' => password_hash('admin2', PASSWORD_DEFAULT)
-            ]
         ];
 
         $this->db->table('tbl_admin')->insertBatch($data);

@@ -42,9 +42,11 @@
                         <span class="micon bi bi-geo-alt-fill"></span><span class="mtext">Peta</span>
                     </a>
                 </li>
-
-
-
+                <li>
+                    <a href="<?= base_url('admin/administrator') ?>" class="dropdown-toggle no-arrow <?= ($activePage == 'administrator' || $activePage == 'tambah_administrator' || $activePage == 'edit_administrator') ? 'active' : '' ?>">
+                        <span class="micon bi bi-person"></span><span class="mtext">Administrator</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

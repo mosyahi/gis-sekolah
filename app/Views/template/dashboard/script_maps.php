@@ -2,6 +2,9 @@
     #map {
         height: 300px;
     }
+    #rute {
+        display: none;
+    }
     .route-instructions {
         margin-top: 20px;
         padding: 10px;
@@ -16,6 +19,54 @@
         border: 1px solid #ddd;
         color: black;
     }
+    .eye-icon {
+        font-size: 15px;
+        color: #007bff;
+        text-decoration: none;
+        transition: transform 0.2s;
+        margin-left: 5px;
+        margin-top: 8px;
+    }
+
+    .eye-icon:hover {
+        transform: scale(1.2);
+    }
+    .popup-content {
+        max-width: 300px;
+    }
+
+    .popup-content h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .popup-content p {
+        margin: 0;
+        padding: 5px 0;
+        font-size: 14px;
+        color: #777;
+    }
+    .route-info {
+        font-size: 14px;
+        color: #555;
+        margin-top: 10px;
+    }
+
+    .distance, .time {
+        font-weight: bold;
+        margin-left: 5px;
+        color: #eb6652;
+    }
+
+    .bi {
+        font-size: 16px;
+        vertical-align: middle;
+        margin-right: 3px;
+    }
+
+
 </style>
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -80,6 +131,15 @@
                     if (lastClickedMarker !== sekolah.marker) {
                         lastClickedMarker = sekolah.marker;
                         showRoute(sekolahLocation);
+
+                // Update detail section with marker data
+                        document.getElementById('detailNamaSekolah').textContent = sekolah.nama_sekolah;
+                        document.getElementById('detailAlamat').textContent = sekolah.alamat;
+                        document.getElementById('detailDeskripsi').textContent = sekolah.deskripsi;
+                        document.getElementById('detailWebsite').textContent = sekolah.website;
+                        document.getElementById('detailWebsite').href = sekolah.website;
+                        document.getElementById('detailAkreditas').textContent = sekolah.akreditas;
+                        document.getElementById('detailGambarLink').href = 'uploads/' + sekolah.gambar;
                     } else {
                         lastClickedMarker = null;
                     }
@@ -89,8 +149,9 @@
                     '<br>Deskripsi: ' + sekolah.deskripsi +
                     '<br>Website: <a href="' + sekolah.website + '" target="_blank">' + sekolah.website + '</a>' +
                     '<br>Akreditas: ' + sekolah.akreditas +
-                    '<br><br><b>Rute Jalan</b>');
+                    '<br>Gambar: <a href="uploads/' + sekolah.gambar + '" data-lightbox="school-image"><i class="bi bi-eye"></i></a>');
             });
+
         });
     }
 
@@ -140,8 +201,16 @@
                 var route = routes[0];
                 var distance = route.summary.totalDistance;
                 var time = route.summary.totalTime;
-                var routeInfo = '<br>Jarak: ' + formatDistance(distance) +
-                '<br>Waktu Tempuh: ' + formatTime(time);
+
+// Update jarak dan waktu dengan nilai yang dihitung
+                document.getElementById('detailJarak').textContent = formatDistance(distance);
+                document.getElementById('detailWaktu').textContent = formatTime(time);
+
+                var routeInfo = '<div class="route-info">' +
+                '<strong>Rute Jalan:</strong><br>' +
+                '<strong>Jarak:</strong> <span class="distance"> ' + formatDistance(distance) + '</span>' +
+                '<br><strong>Waktu Tempuh:</strong> <span class="time"> ' + formatTime(time) + '</span>' +
+                '</div>';
 
                 lastClickedMarker.bindPopup(lastClickedMarker.getPopup().getContent() + routeInfo).openPopup();
 

@@ -16,7 +16,7 @@ class="login-wrap d-flex align-items-center flex-wrap justify-content-center mx-
                         <input
                         type="email"
                         class="form-control form-control-lg" name="email"
-                        placeholder="Username"
+                        placeholder="Email"
                         />
                         <div class="input-group-append custom">
                             <span class="input-group-text"

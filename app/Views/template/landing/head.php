@@ -23,13 +23,13 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css"/>
 
 <!-- Vendor CSS Files -->
-<link href="<?= base_url() ?>assets/vendor/aos/aos.css" rel="stylesheet">
-<link href="<?= base_url() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?= base_url() ?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-<link href="<?= base_url() ?>assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="<?= base_url() ?>assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="<?= base_url() ?>assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-<link href="<?= base_url() ?>assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/vendors/aos/aos.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/vendors/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/vendors/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/vendors/remixicon/remixicon.css" rel="stylesheet">
+<link href="<?= base_url() ?>assets/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
 
 <!-- Template Main CSS File -->
 <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">

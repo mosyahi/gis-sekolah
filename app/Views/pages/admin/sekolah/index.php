@@ -43,12 +43,12 @@
                         <th scope="col">Jenis</th>
                         <th scope="col">Nama Sekolah</th>
                         <th scope="col">Deskripsi</th>
-                        <th scope="col">Gambar</th>
-                        <th scope="col">Website</th>
                         <th scope="col">Alamat</th>
+                        <th scope="col">Website</th>
                         <th scope="col">Akreditasi</th>
                         <th scope="col">Latitude</th>
                         <th scope="col">Longtitude</th>
+                        <th scope="col">Gambar</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -57,23 +57,29 @@
                     <?php foreach ($sekolah as $item) : ?>
                         <tr>
                             <td><?= $counter++ ?></td>
-                            <td class="table-plus"><?= $item['id_kategori'] ?></td>
+                            <td class="table-plus"><?= $item['jenis_sekolah'] . ' - ' . $item['tingkatan'] ?></td>
                             <td><?= $item['nama_sekolah'] ?></td>
                             <td><?= $item['deskripsi'] ?></td>
-                            <td><?= $item['gambar'] ?></td>
-                            <td><?= $item['website'] ?></td>
                             <td><?= $item['alamat'] ?></td>
+                            <td><?= $item['website'] ?></td>
                             <td><?= $item['akreditas'] ?></td>
                             <td><?= $item['latitude'] ?></td>
                             <td><?= $item['longitude'] ?></td>
+                            <td>
+                                <a href="<?= base_url('uploads/' . $item['gambar']) ?>" data-lightbox="gallery">
+                                    <img src="<?= base_url('uploads/' . $item['gambar']) ?>" alt="Gambar Sekolah" width="100">
+                                </a>
+                            </td>
                             <td>
                                 <div class="dropdown">
                                     <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                         <i class="bi bi-gear-fill"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#edit-kategori-<?php echo $item['id_kategori']; ?>"><i class="dw dw-edit2"></i> Edit</a>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#confirmation-modal" data-delete-url="<?= base_url('admin/kategori/delete/' . $item['id_kategori']) ?>"><i class="dw dw-delete-3"></i> Delete</a>
+                                        <a class="dropdown-item" href="<?= site_url('admin/sekolah/edit/' . $item['id_sekolah']) ?>">
+                                            <i class="dw dw-edit2"></i> Edit
+                                        </a>
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#confirmation-modal" data-delete-url="<?= base_url('admin/sekolah/delete/' . $item['id_sekolah']) ?>"><i class="dw dw-delete-3"></i> Delete</a>
                                     </div>
                                 </div>
                             </td>
@@ -84,4 +90,25 @@
         </div>
     </div>
 </div>
+
+<?php foreach ($sekolah as $key => $item) : ?>
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center font-18">
+                    <h4 class="mb-20">Apakah Anda yakin ingin menghapus data sekolah ini?</h4>
+                    <div class="mb-30 text-center">
+                        <img src="<?= base_url('assets/img/question.png') ?>" style="width: 90px; height: 90px;" />
+                    </div>
+                    <p class="mb-30">Data sekolah yang dihapus tidak dapat dikembalikan.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <a href="<?= base_url('admin/sekolah/delete/' . $item['id_sekolah']) ?>" class="btn btn-danger" id="confirm-delete-btn">Hapus</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
 <?= $this->endSection(); ?>

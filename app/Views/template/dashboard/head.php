@@ -7,6 +7,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('vendors/images/favicon-32x32.png') ?>" />
 <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('vendors/images/favicon-16x16.png') ?>" />
 
+<!-- Open Gambar -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
 <!-- Mobile Specific Metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 

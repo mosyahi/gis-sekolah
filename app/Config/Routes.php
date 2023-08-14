@@ -32,6 +32,7 @@ $routes->set404Override();
 
 // HOME
 $routes->get('/', 'Home::index');
+$routes->get('maps', 'Home::maps');
 
 // AUTH
 $routes->get('/login', 'AuthController::index');
@@ -65,6 +66,14 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
     // PETA
     $routes->get('peta', 'PetaController::index');
+    $routes->get('uploads/(:segment)', 'PetaController::showImage/$1');
+
+
+    // ADMINISTRATOR
+    $routes->get('administrator', 'AdministratorController::index');
+    $routes->post('administrator/add', 'AdministratorController::add');
+    $routes->post('administrator/update/(:num)', 'AdministratorController::update/$1');
+    $routes->get('administrator/delete/(:num)', 'AdministratorController::delete/$1');
 });
 
 /*

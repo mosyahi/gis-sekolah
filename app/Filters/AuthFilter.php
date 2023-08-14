@@ -14,6 +14,7 @@ class AuthFilter implements FilterInterface
         $exceptRoutes = [
             'login',
             '/',
+            'maps',
             'forgot-password',
         ];
 

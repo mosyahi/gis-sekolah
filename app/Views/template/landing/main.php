@@ -14,7 +14,7 @@
 	<!-- End Content -->
 
 	<!-- Footer -->
-	<?= $this->include('template/landing/footer'); ?>
+	
 	<!-- End Footer -->
 
 	<!-- Scrirpt -->
