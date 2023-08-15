@@ -51,7 +51,7 @@
             <div class="form-group row">
                 <label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
                 <div class="col-sm-12 col-md-10">
-                    <input class="form-control" name="deskripsi" placeholder="Deskripsi" type="text" value="<?= $sekolah['deskripsi'] ?>" required/>
+                    <textarea class="form-control" name="deskripsi" placeholder="Deskripsi" type="text" required/><?= $sekolah['deskripsi'] ?></textarea>
                 </div>
             </div>
             <div class="form-group row">

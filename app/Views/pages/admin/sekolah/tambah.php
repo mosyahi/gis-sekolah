@@ -2,6 +2,28 @@
 <?= $this->section('content'); ?>
 <?= $this->include('components/sweetAlerts'); ?>
 
+<style>
+        #gambar-preview {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .gambar-item {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .gambar-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
 <!-- <div class="main-container"> -->
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-20px">
@@ -54,13 +76,14 @@
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
                     <div class="col-sm-12 col-md-10">
-                        <input class="form-control" name="deskripsi" placeholder="Search Here" type="search" required/>
+                        <textarea class="form-control" rows="2" name="deskripsi" placeholder="Deskripsi Sekolah" type="search" required/></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Gambar</label>
                     <div class="col-sm-12 col-md-10">
                         <input type="file" name="gambar" id="gambar" accept="image/jpeg, image/png" class="form-control-file form-control height-auto" multiple required/>
+                        <div id="gambar-preview"></div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -116,6 +139,34 @@
         </div>
     </div>
 </div>
-<!-- </div> -->
+
+<script>
+    const gambarInput = document.getElementById('gambar');
+    const previewContainer = document.getElementById('gambar-preview');
+
+    gambarInput.addEventListener('change', function() {
+        previewContainer.innerHTML = ''; // Bersihkan tampilan sebelumnya
+
+        const files = Array.from(this.files);
+
+        files.forEach(file => {
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const gambarItem = document.createElement('div');
+                gambarItem.className = 'gambar-item';
+
+                const imgElement = document.createElement('img');
+                imgElement.src = event.target.result;
+
+                gambarItem.appendChild(imgElement);
+                previewContainer.appendChild(gambarItem);
+            }
+
+            reader.readAsDataURL(file);
+        });
+    });
+</script>
+
 <?= $this->include('template/dashboard/script_map_tambah'); ?>
 <?= $this->endSection(); ?>

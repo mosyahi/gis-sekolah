@@ -33,3 +33,51 @@
 
 <!-- Template Main CSS File -->
 <link href="<?= base_url() ?>assets/css/style.css" rel="stylesheet">
+
+<!-- Import Css Dashboard -->
+<!-- Open Gambar -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+<!-- MAPS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link rel="stylesheet" href="<?= base_url() ?>src/maps/Leaflet.AnimatedSearchBox.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.14.0/dist/Control.Geocoder.css" /> -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder@1.13.0/dist/Control.Geocoder.css"/>
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="<?= base_url('vendors/styles/core.css') ?>" />
+<link rel="stylesheet" type="text/css" href="<?= base_url('vendors/styles/icon-font.min.css') ?>" />
+<link rel="stylesheet" type="text/css" href="<?= base_url('src/plugins/datatables/css/dataTables.bootstrap4.min.css') ?>" />
+<link rel="stylesheet" type="text/css" href="<?= base_url('src/plugins/datatables/css/responsive.bootstrap4.min.css') ?>" />
+<link rel="stylesheet" type="text/css" href="<?= base_url('vendors/styles/style.css') ?>" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag("js", new Date());
+
+	gtag("config", "G-GBZ3SGGX85");
+</script>
+<!-- Google Tag Manager -->
+<script>
+	(function(w, d, s, l, i) {
+		w[l] = w[l] || [];
+		w[l].push({
+			"gtm.start": new Date().getTime(),
+			event: "gtm.js"
+		});
+		var f = d.getElementsByTagName(s)[0],
+		j = d.createElement(s),
+		dl = l != "dataLayer" ? "&l=" + l : "";
+		j.async = true;
+		j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+		f.parentNode.insertBefore(j, f);
+	})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+</script>
+<!-- End Google Tag Manager -->

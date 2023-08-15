@@ -149,7 +149,7 @@
                     '<br>Deskripsi: ' + sekolah.deskripsi +
                     '<br>Website: <a href="' + sekolah.website + '" target="_blank">' + sekolah.website + '</a>' +
                     '<br>Akreditas: ' + sekolah.akreditas +
-                    '<br>Gambar: <a href="uploads/' + sekolah.gambar + '" data-lightbox="school-image"><i class="bi bi-eye"></i></a>');
+                    '<br>Gambar: <a href="uploads/' + sekolah.gambar + '" data-lightbox="school-image"><i class="bi bi-eye"></i>Lihat</a>');
             });
 
         });

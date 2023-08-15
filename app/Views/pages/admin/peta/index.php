@@ -13,21 +13,15 @@
 				</div>
 				<div class="pull-right">
 					<div class="input-group">
-						<input type="text" id="searchInput" class="form-control" placeholder="Cari Sekolah..." style="width: 180px; height: 30px;">
+						<input type="text" id="searchInput" class="form-control" placeholder="Cari Sekolah..." style="width: 180px; height: 40px;">
 						<div class="input-group-append">
-							<button class="btn btn-primary btn-sm" type="button" id="searchButton" style="height: 30px; margin-right: 20px;"><i class="bi bi-search"></i></button>
+							<button class="btn btn-primary btn-sm" type="button" id="searchButton" style="height: 40px; margin-right: 20px;"><i class="bi bi-search"></i></button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<div id="map"></div>
-			</div>
-			<div class="container">
-				<code>
-					<div id="rute"></div>
-				</code>
-			</div>
+			<div id="map"></div>
+			<div id="rute"></div>
 		</div>
 	</div>
 
