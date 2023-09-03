@@ -37,38 +37,46 @@ class="login-wrap d-flex align-items-center flex-wrap justify-content-center mx-
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="input-group mb-0">
-                                <button type="submit" 
-                                class="btn btn-primary btn-lg btn-block"
-                                >Sign In</button
+                                <a type="button" href="<?= base_url('/') ?>"
+                                    class="btn btn-warning btn-lg btn-block"
+                                    >kembali</a
+                                    >
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group mb-0">
+                                    <button type="submit" 
+                                    class="btn btn-primary btn-lg btn-block"
+                                    >Sign In</button
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row pb-30 mt-3">
+                        <div class="col-6">
+                            <div class="custom-control custom-checkbox">
+                                <input
+                                type="checkbox"
+                                class="custom-control-input"
+                                id="customCheck1"
+                                />
+                                <label class="custom-control-label" for="customCheck1"
+                                >Remember</label
                                 >
                             </div>
                         </div>
-                    </div>
-                </form>
-                <div class="row pb-30 mt-3">
-                    <div class="col-6">
-                        <div class="custom-control custom-checkbox">
-                            <input
-                            type="checkbox"
-                            class="custom-control-input"
-                            id="customCheck1"
-                            />
-                            <label class="custom-control-label" for="customCheck1"
-                            >Remember</label
-                            >
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="forgot-password">
-                            <a href="<?= base_url('forgot-password') ?>">Lupa Password</a>
+                        <div class="col-6">
+                            <div class="forgot-password">
+                                <a href="<?= base_url('forgot-password') ?>">Lupa Password</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <?= $this->endSection(); ?>

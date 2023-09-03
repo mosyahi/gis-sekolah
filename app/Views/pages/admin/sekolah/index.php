@@ -42,10 +42,11 @@
                         <th scope="col">No</th>
                         <th scope="col">Jenis</th>
                         <th scope="col">Nama Sekolah</th>
-                        <th scope="col">Deskripsi</th>
-                        <th scope="col">Alamat</th>
-                        <th scope="col">Website</th>
                         <th scope="col">Akreditasi</th>
+                        <th scope="col">Website</th>
+                        <th scope="col">Deskripsi</th>
+                        <th scope="col">Kecamatan</th>
+                        <th scope="col">Alamat</th>
                         <th scope="col">Latitude</th>
                         <th scope="col">Longtitude</th>
                         <th scope="col">Gambar</th>
@@ -59,10 +60,11 @@
                             <td><?= $counter++ ?></td>
                             <td class="table-plus"><?= $item['jenis_sekolah'] . ' - ' . $item['tingkatan'] ?></td>
                             <td><?= $item['nama_sekolah'] ?></td>
-                            <td><?= $item['deskripsi'] ?></td>
-                            <td><?= $item['alamat'] ?></td>
-                            <td><?= $item['website'] ?></td>
                             <td><?= $item['akreditas'] ?></td>
+                            <td><?= $item['website'] ?></td>
+                            <td><?= $item['deskripsi'] ?></td>
+                            <td class="table-plus"><?= $item['kode_kecamatan'] . ' - ' . $item['nama_kecamatan'] ?></td>
+                            <td><?= $item['alamat'] ?></td>
                             <td><?= $item['latitude'] ?></td>
                             <td><?= $item['longitude'] ?></td>
                             <td>
@@ -79,7 +81,7 @@
                                         <a class="dropdown-item" href="<?= site_url('admin/sekolah/edit/' . $item['id_sekolah']) ?>">
                                             <i class="dw dw-edit2"></i> Edit
                                         </a>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#confirmation-modal" data-delete-url="<?= base_url('admin/sekolah/delete/' . $item['id_sekolah']) ?>"><i class="dw dw-delete-3"></i> Delete</a>
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#confirmation-modal-<?= $item['id_sekolah'] ?>" data-delete-url="<?= base_url('admin/sekolah/delete/' . $item['id_sekolah']) ?>"><i class="dw dw-delete-3"></i> Delete</a>
                                     </div>
                                 </div>
                             </td>
@@ -93,7 +95,7 @@
 
 <?php foreach ($sekolah as $key => $item) : ?>
     <!-- Confirmation Modal -->
-    <div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="confirmation-modal-<?= $item['id_sekolah'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body text-center font-18">

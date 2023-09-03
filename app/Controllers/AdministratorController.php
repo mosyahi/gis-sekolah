@@ -51,7 +51,13 @@ public function add()
         'password' => $hashedPassword,
     ];
 
-        // Simpan data user
+    // Email admin bli oli pada
+    $existingAdmin = $userModel->where('email', $userData['email'])->first();
+    if ($existingAdmin) {
+        return redirect()->to(site_url('admin/administrator'))->with('error', 'Email sudah ada dalam database.');
+    }
+
+    // Simpan data user
     $userModel->insert($userData);
     session()->setFlashdata('success', 'Admin berhasil ditambahkan.');
     return redirect()->to('admin/administrator');
@@ -77,16 +83,22 @@ public function update($id)
     $nama = $this->request->getPost('nama');
     $email = $this->request->getPost('email');
 
-        // Buat instance model
+    // Buat instance model
     $userModel = new UserModel();
 
-        // Siapkan data untuk disimpan
+    // Siapkan data untuk disimpan
     $userData = [
         'nama' => $nama,
         'email' => $email
     ];
 
-        // Simpan data user
+    // email gabole sama
+    $existingAdmin = $userModel->where('email', $userData['email'])->first();
+    if ($existingAdmin && $existingAdmin['id_admin'] !== $id) {
+        return redirect()->to(site_url('admin/administrator'))->with('error', 'Email sudah ada dalam database.');
+    }
+
+    // Simpan data user
     $userModel->update($id, $userData);
     session()->setFlashdata('success', 'Admin berhasil diperbaharui.');
     return redirect()->to('admin/administrator');

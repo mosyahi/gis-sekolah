@@ -44,7 +44,7 @@ class KategoriController extends BaseController
         ->countAllResults();
 
         if ($cekKesamaan > 0) {
-            return redirect()->to('admin/kategori')->withInput()->with('error', 'Jenis Sekolah dan Tingkatan sudah ada.');
+            return redirect()->to('admin/kategori')->withInput()->with('error', 'Jenis Kategori dan Tingkatan sudah ada.');
         }
 
         // Simpan data kaetgori
@@ -70,14 +70,12 @@ class KategoriController extends BaseController
     {
         $model = new KategoriModel();
 
-        // Cek apakah data dengan ID yang diberikan ada dalam database
         $data = $model->find($id);
         if (!$data) {
             return redirect()->to('admin/kategori')->with('error', 'Data kategori tidak ditemukan');
         }
 
-        // Validasi input
-        $validation =  \Config\Services::validation();
+        $validation = \Config\Services::validation();
         $validation->setRules([
             'jenis_sekolah' => 'required',
             'tingkatan' => 'required'
@@ -87,17 +85,15 @@ class KategoriController extends BaseController
             return redirect()->back()->withInput()->with('errors', $errors);
         }
 
-        // Ambil data dari form
         $jenisSekolah = $this->request->getPost('jenis_sekolah');
         $tingkatan = $this->request->getPost('tingkatan');
 
-        // Cek apakah ada kesamaan pada tingkatan dan jenis_sekolah
-        $cekKesamaan = $model->where('jenis_sekolah', $data['jenis_sekolah'])
-        ->where('tingkatan', $data['tingkatan'])
-        ->countAllResults();
+        $existingData = $model->where('jenis_sekolah', $jenisSekolah)
+        ->where('tingkatan', $tingkatan)
+        ->first();
 
-        if ($cekKesamaan > 0) {
-            return redirect()->to('admin/kategori')->withInput()->with('error', 'Jenis Sekolah dan Tingkatan sudah ada.');
+        if ($existingData && $existingData['id_kategori'] !== $id) {
+            return redirect()->to('admin/kategori')->with('error', 'Data sudah ada dalam database');
         }
 
         // Simpan data ke dalam database
@@ -109,6 +105,7 @@ class KategoriController extends BaseController
 
         return redirect()->to('admin/kategori')->with('success', 'Data kategori berhasil diperbarui');
     }
+
 
     // Fungsi untuk memeriksa perubahan data
     private function isDataChanged($newData, $existingData)

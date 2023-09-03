@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\KategoriModel;
 use App\Models\SekolahModel;
+use App\Models\KecamatanModel;
 
 class DashboardController extends BaseController
 {
@@ -18,11 +19,15 @@ class DashboardController extends BaseController
         $modelSekolah = new SekolahModel();
         $countSekolah = $modelSekolah->findAll();
 
+        $modelKecamatan = new KecamatanModel();
+        $countKecamatan = $modelKecamatan->findAll();
+
 
         $data = [
             'countAdmin' => $countAdmin,
             'countKategori' => $countKategori,
             'countSekolah' => $countSekolah,
+            'countKecamatan' => $countKecamatan,
             'title' => 'Dashboard'
         ];
         $data['activePage'] = 'home';

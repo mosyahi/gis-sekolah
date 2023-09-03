@@ -20,6 +20,11 @@ class CreateTblSekolah extends Migration
                 'type'           => 'INT',
                 'unsigned'       => true,
             ],
+            'id_kecamatan' => [
+                'constraint'     => 11,
+                'type'           => 'INT',
+                'unsigned'       => true,
+            ],
             'nama_sekolah' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '100',
@@ -62,6 +67,7 @@ class CreateTblSekolah extends Migration
         $this->forge->addPrimaryKey('id_sekolah');
         $this->forge->createTable('tbl_sekolah');
         $this->forge->addForeignKey('id_kategori', 'tbl_kategori', 'id_kategori');
+        $this->forge->addForeignKey('id_kecamatan', 'tbl_kecamatan', 'id_kecamatan');
     }
 
     public function down()
@@ -70,8 +76,9 @@ class CreateTblSekolah extends Migration
         
         // Menghapus constraint foreign key pada kolom id_kategori
         $this->forge->dropForeignKey('tbl_sekolah', 'tbl_sekolah_id_kategori_foreign');
+        $this->forge->dropForeignKey('tbl_sekolah', 'tbl_sekolah_id_kecamatan_foreign');
 
         // Menghapus kolom id_kategori
-        $this->forge->dropColumn('tbl_sekolah', 'id_kategori');
+        $this->forge->dropColumn('tbl_sekolah', 'id_kategori', 'id_kecamatan');
     }
 }

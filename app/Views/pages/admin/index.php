@@ -51,8 +51,25 @@
                         </div>
                     </div>
                     <div class="widget-icon">
-                        <div class="icon">
+                        <div class="icon" data-color="#f6ff00">
                             <i class="icon-copy bi bi-easel2-fill" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-6 mb-20">
+            <div class="card-box height-100-p widget-style3">
+                <div class="d-flex flex-wrap">
+                    <div class="widget-data">
+                        <div class="weight-700 font-24 text-dark"><?= count($countKecamatan) ?></div>
+                        <div class="font-14 text-secondary weight-500">
+                            Data Kecamatan
+                        </div>
+                    </div>
+                    <div class="widget-icon" data-color="#ff6600">
+                        <div class="icon">
+                            <i class="icon-copy bi bi-journal-text" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>

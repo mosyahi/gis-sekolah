@@ -57,8 +57,14 @@
       </div>
       <div class="col-xl-2 col-md-4">
         <div class="icon-box">
-          <i class="bi bi-person-rolodex"></i>
-          <h3><a href="#footer">Kontak</a></h3>
+          <i class="bi bi-box-arrow-in-up-right"></i>
+          <h3><a href="https://kuningan.demo.siap-ppdb.com/">PPDB SMP Sederajat</a></h3>
+        </div>
+      </div>
+      <div class="col-xl-2 col-md-4">
+        <div class="icon-box">
+          <i class="bi bi-arrow-up-right-square"></i>
+          <h3><a href="https://ppdb.jabarprov.go.id/">PPDB SMA Sederajat</a></h3>
         </div>
       </div>
     </div>

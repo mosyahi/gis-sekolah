@@ -68,6 +68,16 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">Kecamatan</label>
+                <div class="col-sm-12 col-md-10">
+                    <select class="form-control" name="id_kecamatan" type="text" required>
+                        <?php foreach ($kecamatan_options as $key => $value): ?>
+                            <option value="<?= $key ?>" <?= ($sekolah['id_kecamatan'] == $key) ? 'selected' : '' ?>><?= $value ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label class="col-sm-12 col-md-2 col-form-label">Alamat</label>
                 <div class="col-sm-12 col-md-10">
                     <input class="form-control" name="alamat" type="text" placeholder="Alamat" value="<?= $sekolah['alamat'] ?>" required/>
@@ -81,6 +91,18 @@
                         <option value="B" <?= ($sekolah['akreditas'] == 'B') ? 'selected' : '' ?>>B</option>
                         <option value="C" <?= ($sekolah['akreditas'] == 'C') ? 'selected' : '' ?>>C</option>
                     </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">Jumlah PSB</label>
+                <div class="col-sm-12 col-md-10">
+                    <input class="form-control" name="jml_psb" type="text" placeholder="Masukkan Jumlah PSB" value="<?= $sekolah['jml_psb'] ?>" required/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">PSB Jalur Zonasi</label>
+                <div class="col-sm-12 col-md-10">
+                    <input class="form-control" name="jml_psb_zonasi" type="text" placeholder="Masukkan Jumlah Jalur Zonasi" value="<?= $sekolah['jml_psb_zonasi'] ?>" required/>
                 </div>
             </div>
             <div class="form-group row">

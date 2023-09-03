@@ -54,6 +54,12 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('kategori/add', 'KategoriController::add');
     $routes->post('kategori/update/(:num)', 'KategoriController::update/$1');
     $routes->get('kategori/delete/(:num)', 'KategoriController::delete/$1');
+
+    // KECAMATAN
+    $routes->get('kecamatan', 'KecamatanController::index');
+    $routes->post('kecamatan/add', 'KecamatanController::add');
+    $routes->post('kecamatan/update/(:num)', 'KecamatanController::update/$1');
+    $routes->get('kecamatan/delete/(:num)', 'KecamatanController::delete/$1');
     
     // SEKOLAH
     $routes->get('sekolah', 'SekolahController::index');
@@ -74,6 +80,10 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('administrator/add', 'AdministratorController::add');
     $routes->post('administrator/update/(:num)', 'AdministratorController::update/$1');
     $routes->get('administrator/delete/(:num)', 'AdministratorController::delete/$1');
+
+    // RESET
+    $routes->get('reset', 'ResetPasswordController::index');
+    $routes->get('reset/delete/(:num)', 'ResetPasswordController::delete/$1');
 });
 
 /*

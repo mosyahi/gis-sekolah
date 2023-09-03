@@ -3,26 +3,26 @@
 <?= $this->include('components/sweetAlerts'); ?>
 
 <style>
-        #gambar-preview {
-            display: flex;
-            flex-wrap: wrap;
-        }
+    #gambar-preview {
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-        .gambar-item {
-            width: 150px;
-            height: 150px;
-            margin: 10px;
-            overflow: hidden;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        }
+    .gambar-item {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
 
-        .gambar-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+    .gambar-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+</style>
 
 <!-- <div class="main-container"> -->
     <div class="pd-ltr-20 xs-pd-20-10">
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Form Tambah Data Kategori</h4>
+                            <h4>Form Tambah Data Sekolah</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -39,7 +39,7 @@
                                     <a href="<?= base_url('admin/dashboard') ?>">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Form Basic
+                                    Form Tambah Data Sekolah
                                 </li>
                             </ol>
                         </nav>
@@ -50,8 +50,8 @@
         <div class="pd-20 card-box mb-30">
             <div class="clearfix">
                 <div class="pull-left">
-                    <h4 class="text-blue h4">Form Tambah Kategori</h4>
-                    <p class="mb-30">Silahkan input data kategori dengan benar.</p>
+                    <h4 class="text-blue h4">Form Tambah Sekolah</h4>
+                    <p class="mb-30">Silahkan input data Sekolah dengan benar.</p>
                 </div>
             </div>
             <form action="<?= site_url('admin/sekolah/add') ?>" method="post" enctype="multipart/form-data">
@@ -93,6 +93,18 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Kecamatan</label>
+                    <div class="col-sm-12 col-md-10">
+                        <select class="form-control" name="id_kecamatan" type="text" placeholder="Isi Kecamatan" required>
+                            <option selected disabled>Pilih Kecamatan</option>}
+                            option
+                            <?php foreach ($kecamatan_options as $key => $value): ?>
+                                <option value="<?= $key ?>"><?= $value ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label class="col-sm-12 col-md-2 col-form-label">Alamat</label>
                     <div class="col-sm-12 col-md-10">
                         <input class="form-control" name="alamat" type="text" placeholder="Alamat" required/>
@@ -107,6 +119,18 @@
                             <option>B</option>
                             <option>C</option>
                         </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Jumlah PSB</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" name="jml_psb" type="number" placeholder="Masukkan Jumlah Penerimaan Siswa Baru" required/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">PSB Jalur Zonasi</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" name="jml_psb_zonasi" type="number" placeholder="Masukkan Jumlah Penerimaan Siswa Baru Jalur Zonasi" required/>
                     </div>
                 </div>
                 <div class="form-group row">

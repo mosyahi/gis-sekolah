@@ -16,7 +16,7 @@
                                 <a href="<?= base_url('admin/administrator') ?>">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Data Kategori
+                                Data Administrator
                             </li>
                         </ol>
                     </nav>
@@ -61,7 +61,7 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                                         <a class="dropdown-item" data-toggle="modal" data-target="#edit-kategori-<?php echo $item['id_admin']; ?>"><i class="dw dw-edit2"></i> Edit</a>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#confirmation-modal" data-delete-url="<?= base_url('admin/administrator/delete/' . $item['id_admin']) ?>"><i class="dw dw-delete-3"></i> Delete</a>
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#confirmation-modal-<?= $item['id_admin'] ?>" data-delete-url="<?= base_url('admin/administrator/delete/' . $item['id_admin']) ?>"><i class="dw dw-delete-3"></i> Delete</a>
                                     </div>
                                 </div>
                             </td>
@@ -124,7 +124,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myLargeModalLabel">
-                            Form Edit Kategori Sekolah
+                            Form Edit Administator
                         </h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                             ×
@@ -159,7 +159,7 @@
         </div>
 
         <!-- Confirmation Modal -->
-        <div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade" id="confirmation-modal-<?= $item['id_admin'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body text-center font-18">
