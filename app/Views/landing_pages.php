@@ -110,7 +110,7 @@
         <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
           <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
             <i class="bx bx-receipt"></i>
-            <h4>Fitut Gis Sekolah 1</h4>
+            <h4>Fitur Gis Sekolah 1</h4>
             <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
           </div>
           <div class="icon-box mt-5" data-aos="zoom-in" data-aos-delay="150">
