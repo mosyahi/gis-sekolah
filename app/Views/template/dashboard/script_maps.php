@@ -173,32 +173,20 @@
 
                 // Menetapkan persentase berdasarkan jarak
                 var persentase = 0;
-                if (distance >= 0 && distance < 300) {
+                if (distance >= 0 && distance < 4000) {
                     persentase = 100;
-                } else if (distance >= 301 && distance < 500) {
-                    persentase = 90;
-                } else if (distance >= 501 && distance < 1000) {
-                    persentase = 80;
-                } else if (distance >= 1001 && distance < 1500) {
-                    persentase = 70;
-                } else if (distance >= 1501 && distance < 2000) {
-                    persentase = 60;
-                } else if (distance >= 2001 && distance <= 2500) {
+                } else if (distance >= 4001 && distance < 6000) {
+                    persentase = 75;
+                } else if (distance >= 6001 && distance < 7000) {
                     persentase = 50;
-                } else if (distance >= 2501 && distance <= 3000) {
-                    persentase = 40;
-                } else if (distance >= 3001 && distance <= 3500) {
-                    persentase = 30;
-                } else if (distance >= 3501 && distance <= 4000) {
-                    persentase = 20;
-                } else if (distance >= 4001 && distance <= 5000) {
-                    persentase = 10;
-                } else if (distance >= 5001 && distance <= 9000) {
-                    persentase = 5;
-                } else if (distance >= 9001 && distance <= 10000) {
+                } else if (distance >= 7001 && distance < 8000) {
+                    persentase = 25;
+                } else if (distance >= 8001 && distance < 9000) {
+                    persentase = 15;
+                } else if (distance >= 9001 && distance < 10000) {
                     persentase = 0;
-                }
-                
+                } 
+
                 sekolah.marker = L.marker(sekolahLocation)
                 .addTo(map)
                 .on('click', function() {
@@ -222,7 +210,9 @@
                             persentaseZonasi = 100;
                         }
 
-                        console.log("Persentase Zonasi:", persentaseZonasi);
+                        // console.log("Persentase Zonasi:", persentaseZonasi);
+                        
+                        // console.log("Jarak ke sekolah " + sekolah.nama_sekolah + ": " + distance.toFixed(2) + " km, Persentase: " + persentase + "%");
 
                         // Menetapkan persentase zonasi ke elemen HTML "persentaseZonasi"
                         document.getElementById('persentaseZonasi').innerHTML = "<strong>" + persentaseZonasi.toFixed(2) + "%</strong> (Menerima <strong>" + sekolah.jml_psb_zonasi + " Siswa </strong> Jalur Zonasi)";
@@ -238,7 +228,7 @@
                         document.getElementById('detailAkreditas').textContent = sekolah.akreditas;
                         document.getElementById('detailGambarLink').href = 'uploads/' + sekolah.gambar;
                         document.getElementById('detailJumlahPSB').textContent = sekolah.jml_psb + " Siswa";
-                        document.getElementById('persentase').textContent = persentase + "%";
+                        // document.getElementById('persentase').textContent = persentase + "%";
                         var detailTable = document.getElementById('detail');
                         detailTable.style.display = 'block';
                     } else {
@@ -372,9 +362,9 @@ addressForm.addEventListener('submit', function(event) {
             var createRouteButton = document.getElementById('createRouteButton');
 
             createRouteButton.addEventListener('click', function () {
-                console.log("Tombol Buat Rute diklik");
+                // console.log("Tombol Buat Rute diklik");
                 var selectedSchoolName = schoolSelect.value;
-                console.log("Nama Sekolah yang Dipilih: " + selectedSchoolName);
+                // console.log("Nama Sekolah yang Dipilih: " + selectedSchoolName);
 
                 if (yourLocation && routeControl) {
                     map.removeControl(routeControl);
@@ -382,13 +372,13 @@ addressForm.addEventListener('submit', function(event) {
 
                 if (newMarker) {
                     var newLocation = newMarker.getLatLng();
-                    console.log("Lokasi Baru: " + newLocation);
+                    // console.log("Lokasi Baru: " + newLocation);
 
                     var selectedSchool = sekolahData.find(function (sekolah) {
                         return sekolah.nama_sekolah === selectedSchoolName;
                     });
 
-        // Hapus konten popup sebelum menambahkan konten baru
+                    // Hapus konten popup sebelum menambahkan konten baru
                     newMarker.getPopup().setContent('');
 
                     var jmlPsbZonasi = selectedSchool.jml_psb_zonasi;
@@ -402,7 +392,7 @@ addressForm.addEventListener('submit', function(event) {
                         persentaseZonasi = 100;
                     }
 
-                    console.log("Persentase Zonasi:", persentaseZonasi);
+                    // console.log("Persentase Zonasi:", persentaseZonasi);
 
                         // Menetapkan persentase zonasi ke elemen HTML "persentaseZonasi"
                     document.getElementById('persentaseZonasi').innerHTML = "<strong>" + persentaseZonasi.toFixed(2) + "%</strong> (Menerima <strong>" + selectedSchool.jml_psb_zonasi + " Siswa </strong> Jalur Zonasi)";
@@ -432,7 +422,7 @@ addressForm.addEventListener('submit', function(event) {
             });
 
             function buatRuteDariLokasiBaruKeSekolah(selectedSchoolName, newLocation) {
-                console.log("Memuat rute dari lokasi baru ke sekolah yang dipilih");
+                // console.log("Memuat rute dari lokasi baru ke sekolah yang dipilih");
                 var selectedSchool = sekolahData.find(function (sekolah) {
                     return sekolah.nama_sekolah === selectedSchoolName;
                 });
@@ -443,45 +433,33 @@ addressForm.addEventListener('submit', function(event) {
                     var distance = newLocation.distanceTo(startingLocation);
 
                     var persentase = 0;
-                    if (distance >= 0 && distance < 300) {
+                    if (distance >= 0 && distance < 4000) {
                         persentase = 100;
-                    } else if (distance >= 301 && distance < 500) {
-                        persentase = 90;
-                    } else if (distance >= 501 && distance < 1000) {
-                        persentase = 80;
-                    } else if (distance >= 1001 && distance < 1500) {
-                        persentase = 70;
-                    } else if (distance >= 1501 && distance < 2000) {
-                        persentase = 60;
-                    } else if (distance >= 2001 && distance <= 2500) {
+                    } else if (distance >= 4001 && distance < 6000) {
+                        persentase = 75;
+                    } else if (distance >= 6001 && distance < 7000) {
                         persentase = 50;
-                    } else if (distance >= 2501 && distance <= 3000) {
-                        persentase = 40;
-                    } else if (distance >= 3001 && distance <= 3500) {
-                        persentase = 30;
-                    } else if (distance >= 3501 && distance <= 4000) {
-                        persentase = 20;
-                    } else if (distance >= 4001 && distance <= 5000) {
-                        persentase = 10;
-                    } else if (distance >= 5001 && distance <= 9000) {
-                        persentase = 5;
-                    } else if (distance >= 9001 && distance <= 10000) {
+                    } else if (distance >= 7001 && distance < 8000) {
+                        persentase = 25;
+                    } else if (distance >= 8001 && distance < 9000) {
+                        persentase = 15;
+                    } else if (distance >= 9001 && distance < 10000) {
                         persentase = 0;
-                    }
+                    } 
 
                     document.getElementById('persentase').innerHTML = "<strong>" + persentase + "%</strong> (Berdasarkan Jarak Lokasi Anda Ke <strong>" + selectedSchool.nama_sekolah + ").</strong>";
 
                     tampilRuteTitikBaru(startingLocation, newLocation);
                 } else {
-                    console.log("Sekolah dengan nama yang dipilih tidak ditemukan.");
+                    // console.log("Sekolah dengan nama yang dipilih tidak ditemukan.");
                 }
             }
         } else {
-            console.log('Tidak dapat menemukan koordinat untuk alamat tersebut.');
+            // console.log('Tidak dapat menemukan koordinat untuk alamat tersebut.');
         }
     })
 .catch(function(error) {
-    console.error('Terjadi kesalahan saat mengambil data geocoding:', error);
+    // console.error('Terjadi kesalahan saat mengambil data geocoding:', error);
 });
 });
 
@@ -535,13 +513,13 @@ map.on('dblclick', function (event) {
     var createRouteButton = document.getElementById('createRouteButton');
 
     createRouteButton.addEventListener('click', function () {
-        console.log("Tombol Buat Rute diklik");
+        // console.log("Tombol Buat Rute diklik");
         var selectedSchoolName = schoolSelect.value;
-        console.log("Nama Sekolah yang Dipilih: " + selectedSchoolName);
+        // console.log("Nama Sekolah yang Dipilih: " + selectedSchoolName);
 
         if (newMarker) {
             var newLocation = newMarker.getLatLng();
-            console.log("Lokasi Baru: " + newLocation);
+            // console.log("Lokasi Baru: " + newLocation);
 
             var selectedSchool = sekolahData.find(function (sekolah) {
                 return sekolah.nama_sekolah === selectedSchoolName;
@@ -561,7 +539,7 @@ map.on('dblclick', function (event) {
                 persentaseZonasi = 100;
             }
 
-            console.log("Persentase Zonasi:", persentaseZonasi);
+            // console.log("Persentase Zonasi:", persentaseZonasi);
 
             // Menetapkan persentase zonasi ke elemen HTML "persentaseZonasi"
             document.getElementById('persentaseZonasi').innerHTML = "<strong>" + persentaseZonasi.toFixed(2) + "%</strong> (Menerima <strong>" + selectedSchool.jml_psb_zonasi + " Siswa </strong> Jalur Zonasi)";
@@ -591,7 +569,7 @@ map.on('dblclick', function (event) {
     });
 
     function buatRuteDariLokasiBaruKeSekolah(selectedSchoolName, newLocation) {
-        console.log("Memuat rute dari lokasi baru ke sekolah yang dipilih");
+        // console.log("Memuat rute dari lokasi baru ke sekolah yang dipilih");
         var selectedSchool = sekolahData.find(function (sekolah) {
             return sekolah.nama_sekolah === selectedSchoolName;
         });
@@ -602,37 +580,25 @@ map.on('dblclick', function (event) {
             var distance = newLocation.distanceTo(startingLocation);
 
             var persentase = 0;
-            if (distance >= 0 && distance < 300) {
+            if (distance >= 0 && distance < 4000) {
                 persentase = 100;
-            } else if (distance >= 301 && distance < 500) {
-                persentase = 90;
-            } else if (distance >= 501 && distance < 1000) {
-                persentase = 80;
-            } else if (distance >= 1001 && distance < 1500) {
-                persentase = 70;
-            } else if (distance >= 1501 && distance < 2000) {
-                persentase = 60;
-            } else if (distance >= 2001 && distance <= 2500) {
+            } else if (distance >= 4001 && distance < 6000) {
+                persentase = 75;
+            } else if (distance >= 6001 && distance < 7000) {
                 persentase = 50;
-            } else if (distance >= 2501 && distance <= 3000) {
-                persentase = 40;
-            } else if (distance >= 3001 && distance <= 3500) {
-                persentase = 30;
-            } else if (distance >= 3501 && distance <= 4000) {
-                persentase = 20;
-            } else if (distance >= 4001 && distance <= 5000) {
-                persentase = 10;
-            } else if (distance >= 5001 && distance <= 9000) {
-                persentase = 5;
-            } else if (distance >= 9001 && distance <= 10000) {
+            } else if (distance >= 7001 && distance < 8000) {
+                persentase = 25;
+            } else if (distance >= 8001 && distance < 9000) {
+                persentase = 15;
+            } else if (distance >= 9001 && distance < 10000) {
                 persentase = 0;
-            }
+            } 
 
             document.getElementById('persentase').innerHTML = "<strong>" + persentase + "%</strong> (Berdasarkan Jarak Lokasi Anda Ke <strong>" + selectedSchool.nama_sekolah + ").</strong>";
 
             tampilRuteTitikBaru(startingLocation, newLocation);
         } else {
-            console.log("Sekolah dengan nama yang dipilih tidak ditemukan.");
+            // console.log("Sekolah dengan nama yang dipilih tidak ditemukan.");
         }
     }
 });
@@ -683,9 +649,24 @@ function showRoute(destination) {
             var distance = route.summary.totalDistance;
             var time = route.summary.totalTime;
 
-                // Update jarak dan waktu dengan nilai yang dihitung
-            document.getElementById('detailJarak').textContent = formatDistance(distance);
-            document.getElementById('detailWaktu').textContent = formatTime(time);
+            var persentase = 0;
+            if (distance >= 0 && distance < 4000) {
+                persentase = 100;
+            } else if (distance >= 4001 && distance < 6000) {
+                persentase = 75;
+            } else if (distance >= 6001 && distance < 7000) {
+                persentase = 50;
+            } else if (distance >= 7001 && distance < 8000) {
+                persentase = 25;
+            } else if (distance >= 8001 && distance < 9000) {
+                persentase = 15;
+            } else if (distance >= 9001 && distance < 10000) {
+                persentase = 0;
+            } 
+
+            document.getElementById('persentase').innerHTML = "<strong>" + persentase + "% </strong> (Berdasarkan jarak anda ke sekolah tujuan)";
+            document.getElementById('detailJarak').innerHTML = "<strong>" + formatDistance(distance) + "</strong>";
+            document.getElementById('detailWaktu').innerHTML = "<strong>" + formatTime(time) + "</strong>";
 
             var routeInfo = '<div class="route-info">' +
             '<strong>Rute Jalan:</strong><br>' +
@@ -733,9 +714,24 @@ function tampilRuteTitikBaru(startLocation, destination) {
             var distance = route.summary.totalDistance;
             var time = route.summary.totalTime;
 
-            // Update jarak dan waktu dengan nilai yang dihitung
-            document.getElementById('detailJarak').textContent = formatDistance(distance);
-            document.getElementById('detailWaktu').textContent = formatTime(time);
+            var persentase = 0;
+            if (distance >= 0 && distance < 4000) {
+                persentase = 100;
+            } else if (distance >= 4001 && distance < 6000) {
+                persentase = 75;
+            } else if (distance >= 6001 && distance < 7000) {
+                persentase = 50;
+            } else if (distance >= 7001 && distance < 8000) {
+                persentase = 25;
+            } else if (distance >= 8001 && distance < 9000) {
+                persentase = 15;
+            } else if (distance >= 9001 && distance < 10000) {
+                persentase = 0;
+            } 
+
+            document.getElementById('persentase').innerHTML = "<strong>" + persentase + "% </strong> (Berdasarkan jarak anda ke sekolah tujuan)";
+            document.getElementById('detailJarak').innerHTML = "<strong>" + formatDistance(distance) + "</strong>";
+            document.getElementById('detailWaktu').innerHTML = "<strong>" + formatTime(time) + "</strong>";
 
             var routeInfo = '<div class="route-info">' +
             '<strong>Rute Jalan:</strong><br>' +
@@ -785,4 +781,23 @@ function formatTime(time) {
 
     return formattedTime;
 }
+
+// function formatPersentase(distance) {
+//     var persentase = 0;
+//     if (distance >= 0 && distance < 4000) {
+//         persentase = 100;
+//     } else if (distance >= 4001 && distance < 6000) {
+//         persentase = 75;
+//     } else if (distance >= 6001 && distance < 7000) {
+//         persentase = 50;
+//     } else if (distance >= 7001 && distance < 8000) {
+//         persentase = 25;
+//     } else if (distance >= 8001 && distance < 9000) {
+//         persentase = 15;
+//     } else if (distance >= 9001 && distance < 10000) {
+//         persentase = 0;
+//     }
+//     return persentase;
+// }
+
 </script>

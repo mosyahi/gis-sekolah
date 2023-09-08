@@ -109,7 +109,7 @@
                             </tr>
                             <tr>
                                 <th>Website</th>
-                                <td><span id="detailWebsite"></span></td>
+                                <td><a type="button" class="text-primary" target="blank" id="detailWebsite"></a></td>
                             </tr>
                             <tr>
                                 <th>Dokumentasi</th>
@@ -147,6 +147,7 @@
                                 <th>Hapus Rute</th>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-danger" id="cancelRouteButton"><i class="bi bi-trash"></i> Hapus Rute</button>
+                                    <!-- <button class="btn btn-sm btn-primary" id="cetakButton"><i class="bi bi-printer"></i> Cetak</button> -->
                                 </td>
                             </tr>
                         </tbody>    
@@ -154,8 +155,7 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </main>
 
 <!-- Footer -->

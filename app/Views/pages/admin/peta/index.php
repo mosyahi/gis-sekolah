@@ -66,7 +66,7 @@
 					</tr>
 					<tr>
 						<th>Website</th>
-						<td><span id="detailWebsite"></span></td>
+						<td><a type="button" class="text-primary" target="blank" id="detailWebsite"></a></td>
 					</tr>
 					<tr>
 						<th>Dokumentasi</th>
