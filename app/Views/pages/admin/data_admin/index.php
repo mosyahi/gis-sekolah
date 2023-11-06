@@ -60,8 +60,8 @@
                                         <i class="bi bi-gear-fill"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#edit-kategori-<?php echo $item['id_admin']; ?>"><i class="dw dw-edit2"></i> Edit</a>
-                                        <a class="dropdown-item" data-toggle="modal" data-target="#confirmation-modal-<?= $item['id_admin'] ?>" data-delete-url="<?= base_url('admin/administrator/delete/' . $item['id_admin']) ?>"><i class="dw dw-delete-3"></i> Delete</a>
+                                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#edit-kategori-<?php echo $item['id_admin']; ?>"><i class="dw dw-edit2"></i> Edit</a>
+                                        <a class="dropdown-item" data-toggle="modal" data-target="#hapus-<?= $item['id_admin'] ?>" data-delete-url="<?= base_url('admin/data-pengguna/delete/' . $item['id_admin']) ?>"><i class="dw dw-delete-3"></i> Delete</a>
                                     </div>
                                 </div>
                             </td>
